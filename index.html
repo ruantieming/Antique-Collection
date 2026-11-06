@@ -1,0 +1,647 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><title>瓷路 · 铁明藏瓷 | Porcelain Routes</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap">
+<style>
+:root{
+  color-scheme:light; box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#F5F6F2; --panel:#FDFDFB; --ink:#26282B; --muted:#6E7276; --line:#D8DAD3;
+  --cn:#3A5FA8; --we:#8A6B45; --jp:#B0473A; --is:#2E8B8B;
+  --ok:#2F7D4F; --buy:#C08A1E; --gap:#8A8F94; --spec:#8A5FA8;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){ color-scheme:dark;
+    --bg:#16181B; --panel:#1E2125; --ink:#E8E6E1; --muted:#9DA2A7; --line:#3A3E43;
+    --cn:#89A5E0; --we:#C8A578; --jp:#E08573; --is:#5FB8B8;
+    --ok:#6FBF8F; --buy:#E0B45C; --gap:#8A8F94; --spec:#B894D6;
+  }
+}
+:root[data-theme="dark"]{ color-scheme:dark;
+  --bg:#16181B; --panel:#1E2125; --ink:#E8E6E1; --muted:#9DA2A7; --line:#3A3E43;
+  --cn:#89A5E0; --we:#C8A578; --jp:#E08573; --is:#5FB8B8;
+  --ok:#6FBF8F; --buy:#E0B45C; --gap:#8A8F94; --spec:#B894D6;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);}
+body{background:var(--bg); color:var(--ink); font-family:'Noto Sans SC',-apple-system,sans-serif;
+  margin:0; padding:28px 20px 48px; line-height:1.65; font-size:14px;}
+img{max-width:100%;}
+.wrap{max-width:1200px; margin:0 auto;}
+h1{font-family:'Noto Serif SC',serif; font-weight:700; font-size:30px; margin:0 0 4px; letter-spacing:.02em; text-wrap:balance;}
+h2.sec{font-family:'Noto Serif SC',serif; font-size:21px; margin:38px 0 4px; letter-spacing:.03em;}
+.sub{color:var(--muted); font-size:14px; margin:0 0 20px;}
+.secsub{color:var(--muted); font-size:13px; margin:0 0 14px;}
+nav.top{display:flex; flex-wrap:wrap; gap:8px; margin:0 0 24px; align-items:center;}
+nav.top button{font:inherit; font-size:13.5px; padding:6px 14px; border-radius:999px;
+  border:1px solid var(--line); background:var(--panel); color:var(--ink); cursor:pointer;}
+nav.top button:hover{border-color:var(--muted);}
+nav.top .langb{margin-left:auto; font-weight:700;}
+.legend{display:flex; flex-wrap:wrap; gap:10px 22px; font-size:13px; margin:0 0 14px; align-items:center;}
+.legend span{display:inline-flex; align-items:center; gap:7px;}
+.dot{width:11px;height:11px;border-radius:50%;display:inline-block;}
+.d-ok{background:var(--ok);} .d-buy{background:var(--buy);}
+.d-gap{background:transparent;border:1.6px dashed var(--gap);}
+.d-ctx{width:14px;height:8px;border-radius:2px;border:1px dashed var(--muted);background:transparent;}
+.chart{background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:14px 8px 6px; overflow-x:auto;}
+.chart svg{min-width:1150px; width:100%; height:auto; display:block;}
+figure{margin:0;}
+figcaption{color:var(--muted); font-size:13px; margin:10px 6px 0; max-width:70ch;}
+.lists{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:14px; margin-top:22px;}
+.card{background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:14px 16px;}
+.card h2{font-family:'Noto Serif SC',serif; font-size:16px; margin:0 0 8px; display:flex; align-items:center; gap:8px;}
+.tag{width:10px;height:10px;border-radius:2px;display:inline-block;}
+.card p{font-size:13.5px; margin:0; color:var(--ink);}
+.card p b{font-weight:700;}
+.card .mut{color:var(--muted);}
+.note{color:var(--muted); font-size:12.5px; margin-top:18px; max-width:78ch;}
+text{font-family:'Noto Sans SC',sans-serif;}
+svg a{cursor:pointer;}
+svg a:hover rect{opacity:.28;}
+body[data-lang="en"] .only-zh{display:none!important;}
+body[data-lang="zh"] .only-en{display:none!important;}
+.grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(215px,1fr)); gap:14px;}
+.item{background:var(--panel); border:1px solid var(--line); border-radius:12px; overflow:hidden;
+  cursor:pointer; display:flex; flex-direction:column; transition:border-color .15s, transform .15s;}
+.item:hover{border-color:var(--muted); transform:translateY(-2px);}
+.thumb{aspect-ratio:4/3; background:var(--bg); display:flex; align-items:center; justify-content:center; overflow:hidden;}
+.thumb img{width:100%; height:100%; object-fit:cover; display:block;}
+.thumb .ph{font-family:'Noto Serif SC',serif; font-size:34px; color:var(--line);}
+.item .tx{padding:10px 12px 12px;}
+.item .tt{font-weight:700; font-size:14px; line-height:1.4;}
+.item .dt{color:var(--muted); font-size:12px; margin-top:2px;}
+.chip{display:inline-block; font-size:11px; padding:1px 8px; border-radius:999px; margin-top:7px;
+  border:1px solid var(--line); color:var(--muted);}
+.chip.ok{color:var(--ok); border-color:var(--ok);}
+.chip.buy{color:var(--buy); border-color:var(--buy);}
+.chip.spec{color:var(--spec); border-color:var(--spec);}
+#detail{max-width:860px; margin:0 auto;}
+.back{font:inherit; font-size:13.5px; padding:6px 14px; border-radius:999px; border:1px solid var(--line);
+  background:var(--panel); color:var(--ink); cursor:pointer; margin-bottom:18px;}
+#detail h1{font-size:26px;}
+.meta{display:flex; flex-wrap:wrap; gap:8px; margin:10px 0 18px;}
+.meta span{font-size:12.5px; padding:3px 11px; border-radius:999px; border:1px solid var(--line);
+  background:var(--panel); color:var(--muted);}
+.meta span b{color:var(--ink); font-weight:500;}
+.hero{border-radius:12px; overflow:hidden; border:1px solid var(--line); background:var(--panel); margin-bottom:10px;}
+.hero img{width:100%; max-height:560px; object-fit:contain; display:block; background:var(--bg);}
+.strip{display:flex; gap:8px; margin-bottom:20px; flex-wrap:wrap;}
+.strip img{width:92px; height:92px; object-fit:cover; border-radius:8px; border:1px solid var(--line); cursor:pointer;}
+.strip img.on{outline:2px solid var(--cn);}
+.dsec{background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:14px 18px; margin-bottom:12px;}
+.dsec h3{font-family:'Noto Serif SC',serif; font-size:15px; margin:0 0 8px;}
+.dsec ul{margin:0; padding-left:20px;}
+.dsec li{margin:3px 0; font-size:13.5px;}
+.verdict{font-size:15px; line-height:1.7; border-left:3px solid var(--cn); padding:4px 14px; margin:0 0 18px; background:var(--panel); border-radius:0 8px 8px 0;}
+</style>
+</head><body data-lang="zh">
+<div class="wrap">
+
+<div id="home">
+<h1><span class="only-zh">瓷路 · 铁明藏瓷</span><span class="only-en">Porcelain Routes · The Tieming Collection</span></h1>
+<p class="sub"><span class="only-zh">中国 · 西方 · 日本三条瓷器线的四百年互动，与藏品的对位（1550–2000）。点年表上的实心块或下方卡片，看单件档案。</span><span class="only-en">Four centuries of interplay among the Chinese, Western and Japanese porcelain traditions (1550–2000), mapped against this collection. Click a solid block on the chart, or any card below, to open an item dossier.</span></p>
+<nav class="top">
+  <button onclick="go('')"><span class="only-zh">年表</span><span class="only-en">Timeline</span></button>
+  <button onclick="go('study')"><span class="only-zh">标本室</span><span class="only-en">Study Room</span></button>
+  <button class="langb" onclick="toggleLang()" id="langbtn">EN</button>
+</nav>
+
+<div class="legend">
+  <span><i class="dot d-ok"></i><span class="only-zh">已有</span><span class="only-en">Owned</span></span>
+  <span><i class="dot d-gap"></i><span class="only-zh">缺口目标</span><span class="only-en">Gap target</span></span>
+  <span><i class="d-ctx"></i><span class="only-zh">背景（不必收）</span><span class="only-en">Context only</span></span>
+  <span style="color:var(--cn)"><span class="only-zh">— 中国</span><span class="only-en">— China</span></span>
+  <span style="color:var(--we)"><span class="only-zh">— 西方</span><span class="only-en">— West</span></span>
+  <span style="color:var(--jp)"><span class="only-zh">— 日本</span><span class="only-en">— Japan</span></span>
+  <span style="color:var(--is)"><span class="only-zh">— 伊斯兰</span><span class="only-en">— Islamic</span></span>
+</div>
+<figure><div class="chart">
+<svg viewBox="0 0 1460 560" role="img" aria-label="三线年表">
+  <g font-size="12" text-anchor="middle">
+    <rect x="100" y="26" width="92" height="28" fill="var(--line)" opacity="0.30" rx="3"/>
+    <rect x="208" y="26" width="161.7" height="28" fill="var(--line)" opacity="0.22" rx="3"/>
+    <rect x="369.7" y="26" width="505.4" height="28" fill="var(--line)" opacity="0.38" rx="3"/>
+    <rect x="875.1" y="26" width="225" height="28" fill="var(--line)" opacity="0.22" rx="3"/>
+    <rect x="1100.1" y="26" width="301.9" height="28" fill="var(--line)" opacity="0.38" rx="3"/>
+    <line x1="369.7" y1="24" x2="369.7" y2="56" stroke="var(--muted)" stroke-width="1"/>
+    <line x1="875.1" y1="24" x2="875.1" y2="56" stroke="var(--muted)" stroke-width="1"/>
+    <line x1="1100.1" y1="24" x2="1100.1" y2="56" stroke="var(--muted)" stroke-width="1"/>
+    <text x="146" y="38" font-weight="700" font-size="10" fill="var(--ink)" data-en="Yuan–early Ming">元—明前期</text>
+    <text x="289" y="38" font-weight="700" font-size="12" fill="var(--ink)" data-en="Ming">明</text>
+    <text x="622" y="38" font-weight="700" font-size="12" fill="var(--ink)" data-en="Qing">清</text>
+    <text x="988" y="38" font-weight="700" font-size="11" fill="var(--ink)" data-en="Republic">民国</text>
+    <text x="1251" y="38" font-weight="700" font-size="11" fill="var(--ink)" data-en="PRC">现代</text>
+    <g font-size="9" fill="var(--muted)">
+      <text x="287.1" y="51" data-en="Wanli">万历</text>
+      <text x="452.2" y="51" data-en="Kangxi">康熙</text>
+      <text x="577.8" y="51" data-en="Qianlong">乾隆</text>
+      <text x="698.2" y="51" data-en="Daoguang">道光</text>
+      <text x="775.6" y="51" data-en="Tongzhi–Guangxu">同治·光绪</text>
+    </g>
+  </g>
+  <g stroke="var(--muted)" stroke-width="1.3">
+    <line x1="196" y1="24" x2="202" y2="56"/>
+    <line x1="202" y1="24" x2="208" y2="56"/>
+    <line x1="196" y1="64" x2="202" y2="82"/>
+    <line x1="202" y1="64" x2="208" y2="82"/>
+  </g>
+  <g stroke="var(--line)" stroke-width="1">
+    <line x1="208" y1="86" x2="208" y2="540"/>
+    <line x1="294" y1="86" x2="294" y2="540"/>
+    <line x1="380" y1="86" x2="380" y2="540"/>
+    <line x1="466" y1="86" x2="466" y2="540"/>
+    <line x1="552" y1="86" x2="552" y2="540"/>
+    <line x1="638" y1="86" x2="638" y2="540"/>
+    <line x1="724" y1="86" x2="724" y2="540"/>
+    <line x1="810" y1="86" x2="810" y2="540"/>
+    <line x1="928.4" y1="86" x2="928.4" y2="540"/>
+    <line x1="1046.8" y1="86" x2="1046.8" y2="540"/>
+    <line x1="1165.2" y1="86" x2="1165.2" y2="540"/>
+    <line x1="1283.6" y1="86" x2="1283.6" y2="540"/>
+    <line x1="1402" y1="86" x2="1402" y2="540"/>
+  </g>
+  <g font-size="12" fill="var(--muted)" text-anchor="middle">
+    <text x="146" y="72" font-size="10">1320s</text>
+    <text x="208" y="72">1550</text>
+    <text x="294" y="72">1600</text>
+    <text x="380" y="72">1650</text>
+    <text x="466" y="72">1700</text>
+    <text x="552" y="72">1750</text>
+    <text x="638" y="72">1800</text>
+    <text x="724" y="72">1850</text>
+    <text x="810" y="72">1900</text>
+    <text x="928.4" y="72">1920</text>
+    <text x="1046.8" y="72">1940</text>
+    <text x="1165.2" y="72">1960</text>
+    <text x="1283.6" y="72">1980</text>
+    <text x="1402" y="72">2000</text>
+  </g>
+  <text x="805" y="553" font-size="9" fill="var(--muted)" text-anchor="middle" data-en="← compressed · non-linear scale · expanded →">← 压缩 · 非线性比例 · 1900后放大 →</text>
+  <rect x="96" y="96" width="1324" height="152" rx="6" fill="var(--cn)" opacity="0.06"/>
+  <text x="20" y="180" fill="var(--cn)" font-size="16" font-weight="700" font-family="'Noto Serif SC',serif" data-en="China">中国</text>
+  <rect x="96" y="264" width="1324" height="104" rx="6" fill="var(--we)" opacity="0.06"/>
+  <text x="20" y="322" fill="var(--we)" font-size="16" font-weight="700" font-family="'Noto Serif SC',serif" data-en="West">西方</text>
+  <rect x="96" y="372" width="1324" height="104" rx="6" fill="var(--jp)" opacity="0.06"/>
+  <text x="20" y="430" fill="var(--jp)" font-size="16" font-weight="700" font-family="'Noto Serif SC',serif" data-en="Japan">日本</text>
+  <rect x="96" y="484" width="1324" height="56" rx="6" fill="var(--is)" opacity="0.06"/>
+  <text x="8" y="520" fill="var(--is)" font-size="13" font-weight="700" font-family="'Noto Serif SC',serif" data-en="Islamic">伊斯兰</text>
+  <rect x="1106" y="86" width="124.3" height="454" fill="var(--gap)" opacity="0.10"/>
+  <text x="1168.2" y="97" font-size="10" fill="var(--muted)" text-anchor="middle" data-en="US embargo 1950–71">美国禁运 1950–71</text>
+  <defs><marker id="arr" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="var(--muted)"/></marker></defs>
+  <a href="#fake-yuan-plate">
+  <rect x="100" y="104" width="92" height="40" rx="6" fill="var(--cn)" opacity="0.10"/>
+  <rect x="100" y="104" width="92" height="40" rx="6" fill="none" stroke="var(--cn)" stroke-dasharray="4 3"/>
+  <text x="110" y="121" font-size="12" fill="var(--ink)" data-en="Yuan B&amp;W">元青花</text>
+  <text x="108" y="136" font-size="9.5" fill="var(--muted)" data-en="c.1320s–68 · museum only">约1320–68·博物馆级</text>
+  </a>
+  <rect x="242.4" y="104" width="120.4" height="40" rx="6" fill="var(--cn)" opacity="0.10"/>
+  <rect x="242.4" y="104" width="120.4" height="40" rx="6" fill="none" stroke="var(--cn)" stroke-dasharray="4 3"/>
+  <text x="252.4" y="121" font-size="12" fill="var(--ink)" data-en="Kraak ware to Europe">克拉克瓷外销欧洲</text>
+  <text x="250.4" y="136" font-size="9.5" fill="var(--muted)" data-en="c.1570–1640">约1570–1640</text>
+  <a href="#transitional-bowl">
+  <rect x="362.8" y="104" width="86" height="40" rx="6" fill="var(--cn)" opacity="0.14"/>
+  <rect x="362.8" y="104" width="86" height="40" rx="6" fill="none" stroke="var(--cn)" stroke-width="1.5"/>
+  <circle cx="375.8" cy="117" r="5" fill="var(--ok)"/>
+  <text x="383.8" y="121" font-size="11" font-weight="700" fill="var(--ink)" data-en="Transitional bowl">转变期大碗</text>
+  <text x="370.8" y="136" font-size="9.5" fill="var(--muted)" data-en="1650–80 · oldest">1650–80·藏品最老</text>
+  </a>
+  <rect x="448.8" y="104" width="223.6" height="40" rx="6" fill="var(--cn)" opacity="0.14"/>
+  <rect x="448.8" y="104" width="223.6" height="40" rx="6" fill="none" stroke="var(--cn)" stroke-width="1.5"/>
+  <circle cx="461.8" cy="117" r="5" fill="none" stroke="var(--gap)" stroke-width="1.6" stroke-dasharray="3 2"/>
+  <text x="469.8" y="121" font-size="12" font-weight="700" fill="var(--ink)" data-en="Export B&amp;W · Canton / Nanking">外销青花 Canton / Nanking</text>
+  <text x="456.8" y="136" font-size="9.5" fill="var(--muted)" data-en="c.1690–1820 · anchor">约1690–1820·整线锚点</text>
+  <rect x="724" y="104" width="180.7" height="40" rx="6" fill="var(--cn)" opacity="0.14"/>
+  <rect x="724" y="104" width="180.7" height="40" rx="6" fill="none" stroke="var(--cn)" stroke-width="1.5"/>
+  <circle cx="737" cy="117" r="5" fill="var(--ok)"/>
+  <text x="745" y="121" font-size="12" font-weight="700" fill="var(--ink)" data-en="Canton Rose Medallion">广彩 Rose Medallion</text>
+  <text x="732" y="136" font-size="9.5" fill="var(--muted)" data-en="1850–1916 · plate, cup &amp; saucer">1850–1916·盘杯碟</text>
+  <rect x="916.6" y="104" width="118.4" height="40" rx="6" fill="var(--cn)" opacity="0.14"/>
+  <rect x="916.6" y="104" width="118.4" height="40" rx="6" fill="none" stroke="var(--cn)" stroke-width="1.5"/>
+  <circle cx="929.6" cy="117" r="5" fill="var(--ok)"/>
+  <text x="937.6" y="121" font-size="11" font-weight="700" fill="var(--ink)" data-en="FR vases 1922/1928">新粉彩瓶 1922/1928</text>
+  <text x="924.6" y="136" font-size="9.5" fill="var(--muted)" data-en="lion-handle verified">狮耳瓶火石红验证</text>
+  <rect x="1106" y="104" width="130.2" height="40" rx="6" fill="var(--cn)" opacity="0.14"/>
+  <rect x="1106" y="104" width="130.2" height="40" rx="6" fill="none" stroke="var(--cn)" stroke-width="1.5"/>
+  <circle cx="1119" cy="117" r="5" fill="var(--ok)"/>
+  <text x="1127" y="121" font-size="12" font-weight="700" fill="var(--ink)" data-en="HK-decorated">港澳彩</text>
+  <text x="1114" y="136" font-size="9.5" fill="var(--muted)" data-en="embargo-era enameling">禁运期加彩</text>
+  <a href="#transfer-bowl">
+  <rect x="1248.1" y="104" width="77" height="40" rx="6" fill="var(--cn)" opacity="0.14"/>
+  <rect x="1248.1" y="104" width="77" height="40" rx="6" fill="none" stroke="var(--cn)" stroke-width="1.5"/>
+  <circle cx="1261.1" cy="117" r="5" fill="var(--ok)"/>
+  <text x="1269.1" y="121" font-size="11" font-weight="700" fill="var(--ink)" data-en="Transfer bowl">出口贴花碗</text>
+  <text x="1256.1" y="136" font-size="9.5" fill="var(--muted)" data-en="MADE IN CHINA">MADE IN CHINA</text>
+  </a>
+  <rect x="1336.9" y="104" width="65.1" height="40" rx="6" fill="var(--cn)" opacity="0.14"/>
+  <rect x="1336.9" y="104" width="65.1" height="40" rx="6" fill="none" stroke="var(--cn)" stroke-width="1.5"/>
+  <circle cx="1349.9" cy="117" r="5" fill="var(--ok)"/>
+  <text x="1357.9" y="121" font-size="11" font-weight="700" fill="var(--ink)" data-en="Twelve Beauties">十二钗盘</text>
+  <text x="1344.9" y="136" font-size="9.5" fill="var(--muted)" data-en="1980s">1980s</text>
+  <a href="#daoguang-jar">
+  <rect x="638" y="152" width="172" height="40" rx="6" fill="var(--cn)" opacity="0.14"/>
+  <rect x="638" y="152" width="172" height="40" rx="6" fill="none" stroke="var(--cn)" stroke-width="1.5"/>
+  <circle cx="651" cy="165" r="5" fill="var(--ok)"/>
+  <text x="659" y="169" font-size="12" font-weight="700" fill="var(--ink)" data-en="Domestic folk kiln">内销民窑</text>
+  <text x="646" y="184" font-size="9.5" fill="var(--muted)" data-en="double-lid jar 1820–60">双盖罐 1820–60 等</text>
+  </a>
+  <rect x="916.6" y="152" width="153.9" height="40" rx="6" fill="var(--cn)" opacity="0.14"/>
+  <rect x="916.6" y="152" width="153.9" height="40" rx="6" fill="none" stroke="var(--cn)" stroke-width="1.5"/>
+  <circle cx="929.6" cy="165" r="5" fill="var(--ok)"/>
+  <text x="937.6" y="169" font-size="12" font-weight="700" fill="var(--ink)" data-en="Landscape cups ×3">手绘山水杯×3</text>
+  <text x="924.6" y="184" font-size="9.5" fill="var(--muted)" data-en="1920s–40s">1920s–40s</text>
+  <rect x="1106" y="152" width="77" height="40" rx="6" fill="var(--cn)" opacity="0.14"/>
+  <rect x="1106" y="152" width="77" height="40" rx="6" fill="none" stroke="var(--cn)" stroke-width="1.5"/>
+  <circle cx="1119" cy="165" r="5" fill="var(--ok)"/>
+  <text x="1127" y="169" font-size="11" font-weight="700" fill="var(--ink)" data-en="Bat-shou bowl">蝠寿碗</text>
+  <text x="1114" y="184" font-size="9.5" fill="var(--muted)" data-en="1950s–60s">1950s–60s</text>
+  <rect x="1194.8" y="152" width="88.8" height="40" rx="6" fill="var(--cn)" opacity="0.14"/>
+  <rect x="1194.8" y="152" width="88.8" height="40" rx="6" fill="none" stroke="var(--cn)" stroke-width="1.5"/>
+  <circle cx="1207.8" cy="165" r="5" fill="var(--ok)"/>
+  <text x="1215.8" y="169" font-size="10" font-weight="700" fill="var(--ink)" data-en="Wanshou tea set">万寿无疆茶具</text>
+  <text x="1202.8" y="184" font-size="9.5" fill="var(--muted)" data-en="1960s–80s">1960s–80s</text>
+  <rect x="1295.4" y="152" width="106.6" height="40" rx="6" fill="var(--cn)" opacity="0.14"/>
+  <rect x="1295.4" y="152" width="106.6" height="40" rx="6" fill="none" stroke="var(--cn)" stroke-width="1.5"/>
+  <circle cx="1308.4" cy="165" r="5" fill="var(--ok)"/>
+  <text x="1316.4" y="169" font-size="11" font-weight="700" fill="var(--ink)" data-en="Rice-grain tea set">玲珑茶具</text>
+  <text x="1303.4" y="184" font-size="9.5" fill="var(--muted)" data-en="1970s–80s">1970s–80s</text>
+  <rect x="1106" y="200" width="82.9" height="40" rx="6" fill="var(--cn)" opacity="0.14"/>
+  <rect x="1106" y="200" width="82.9" height="40" rx="6" fill="none" stroke="var(--cn)" stroke-width="1.5"/>
+  <circle cx="1119" cy="213" r="5" fill="var(--ok)"/>
+  <text x="1127" y="217" font-size="11" font-weight="700" fill="var(--ink)" data-en="FR vase pair">粉彩对瓶</text>
+  <text x="1114" y="232" font-size="9.5" fill="var(--muted)" data-en="1950s–70s">1950s–70s</text>
+  <rect x="1200.7" y="200" width="94.7" height="40" rx="6" fill="var(--cn)" opacity="0.14"/>
+  <rect x="1200.7" y="200" width="94.7" height="40" rx="6" fill="none" stroke="var(--cn)" stroke-width="1.5"/>
+  <circle cx="1213.7" cy="213" r="5" fill="var(--ok)"/>
+  <text x="1221.7" y="217" font-size="11" font-weight="700" fill="var(--ink)" data-en="Red Chamber plates">红楼梦艺术盘</text>
+  <text x="1208.7" y="232" font-size="9.5" fill="var(--muted)" data-en="1980s">1980s</text>
+  <rect x="1307.3" y="200" width="94.7" height="40" rx="6" fill="var(--cn)" opacity="0.14"/>
+  <rect x="1307.3" y="200" width="94.7" height="40" rx="6" fill="none" stroke="var(--cn)" stroke-width="1.5"/>
+  <circle cx="1320.3" cy="213" r="5" fill="var(--ok)"/>
+  <text x="1328.3" y="217" font-size="11" font-weight="700" fill="var(--ink)" data-en="1977 vase">1977 丁巳瓶</text>
+  <text x="1315.3" y="232" font-size="9.5" fill="var(--muted)" data-en="Jingdezhen">景德镇</text>
+  <rect x="380" y="272" width="223.6" height="40" rx="6" fill="var(--we)" opacity="0.14"/>
+  <rect x="380" y="272" width="223.6" height="40" rx="6" fill="none" stroke="var(--we)" stroke-width="1.5"/>
+  <circle cx="393" cy="285" r="5" fill="none" stroke="var(--gap)" stroke-width="1.6" stroke-dasharray="3 2"/>
+  <text x="401" y="289" font-size="12" font-weight="700" fill="var(--ink)" data-en="Delft tin-glaze B&amp;W">Delft 锡釉仿青花</text>
+  <text x="388" y="304" font-size="9.5" fill="var(--muted)" data-en="1650–1780 · gap">1650–1780·缺口</text>
+  <rect x="620.8" y="272" width="781.2" height="40" rx="6" fill="var(--we)" opacity="0.14"/>
+  <rect x="620.8" y="272" width="781.2" height="40" rx="6" fill="none" stroke="var(--we)" stroke-width="1.5"/>
+  <circle cx="633.8" cy="285" r="5" fill="var(--ok)"/>
+  <text x="641.8" y="289" font-size="12" font-weight="700" fill="var(--ink)" data-en="Blue Willow">柳纹 Blue Willow</text>
+  <text x="628.8" y="304" font-size="9.5" fill="var(--muted)" data-en="fixed 1790, printed ever since">1790定型·印行至今</text>
+  <rect x="552" y="320" width="68.8" height="40" rx="6" fill="var(--we)" opacity="0.10"/>
+  <rect x="552" y="320" width="68.8" height="40" rx="6" fill="none" stroke="var(--we)" stroke-dasharray="4 3"/>
+  <text x="562" y="337" font-size="11" fill="var(--ink)" data-en="English chinoiserie">英国瓷中国风</text>
+  <text x="560" y="352" font-size="9.5" fill="var(--muted)" data-en="Worcester · optional">Worcester·可选</text>
+  <rect x="916.6" y="320" width="100.6" height="40" rx="6" fill="var(--we)" opacity="0.14"/>
+  <rect x="916.6" y="320" width="100.6" height="40" rx="6" fill="none" stroke="var(--we)" stroke-width="1.5"/>
+  <circle cx="929.6" cy="333" r="5" fill="var(--ok)"/>
+  <text x="937.6" y="337" font-size="11" font-weight="700" fill="var(--ink)" data-en="Crown Ducal pot">Crown Ducal 壶</text>
+  <text x="924.6" y="352" font-size="9.5" fill="var(--muted)" data-en="1920s–30s revival">1920s–30s 复兴</text>
+  <rect x="1029" y="320" width="94.7" height="40" rx="6" fill="var(--we)" opacity="0.14"/>
+  <rect x="1029" y="320" width="94.7" height="40" rx="6" fill="none" stroke="var(--we)" stroke-width="1.5"/>
+  <circle cx="1042" cy="333" r="5" fill="var(--ok)"/>
+  <text x="1050" y="337" font-size="11" font-weight="700" fill="var(--ink)" data-en="Mason's jug">Mason's 水壶</text>
+  <text x="1037" y="352" font-size="9.5" fill="var(--muted)" data-en="20th c.">20世纪</text>
+  <rect x="1331" y="320" width="71" height="40" rx="6" fill="var(--we)" opacity="0.14"/>
+  <rect x="1331" y="320" width="71" height="40" rx="6" fill="none" stroke="var(--we)" stroke-width="1.5"/>
+  <circle cx="1344" cy="333" r="5" fill="var(--ok)"/>
+  <text x="1352" y="337" font-size="10" font-weight="700" fill="var(--ink)" data-en="JB Willow bowl">JB 柳纹碗</text>
+  <text x="1339" y="352" font-size="9.5" fill="var(--muted)" data-en="1990s">1990s</text>
+  <rect x="380" y="380" width="154.8" height="40" rx="6" fill="var(--jp)" opacity="0.10"/>
+  <rect x="380" y="380" width="154.8" height="40" rx="6" fill="none" stroke="var(--jp)" stroke-dasharray="4 3"/>
+  <text x="390" y="397" font-size="12" fill="var(--ink)" data-en="Imari golden age">伊万里外销黄金期</text>
+  <text x="388" y="412" font-size="9.5" fill="var(--muted)" data-en="fills China’s gap 1650–1740">替补中国断供 1650–1740</text>
+  <rect x="755" y="380" width="126.1" height="40" rx="6" fill="var(--jp)" opacity="0.14"/>
+  <rect x="755" y="380" width="126.1" height="40" rx="6" fill="none" stroke="var(--jp)" stroke-width="1.5"/>
+  <circle cx="768" cy="393" r="5" fill="var(--ok)"/>
+  <text x="776" y="397" font-size="12" font-weight="700" fill="var(--ink)" data-en="Meiji export">明治外销</text>
+  <text x="763" y="412" font-size="9.5" fill="var(--muted)" data-en="Imari bowl · Kutani plate">伊万里大碗·九谷盘</text>
+  <rect x="975.8" y="380" width="153.9" height="40" rx="6" fill="var(--jp)" opacity="0.14"/>
+  <rect x="975.8" y="380" width="153.9" height="40" rx="6" fill="none" stroke="var(--jp)" stroke-width="1.5"/>
+  <circle cx="988.8" cy="393" r="5" fill="var(--ok)"/>
+  <text x="996.8" y="397" font-size="12" font-weight="700" fill="var(--ink)" data-en="Kutani Kasen set">九谷歌仙茶具</text>
+  <text x="983.8" y="412" font-size="9.5" fill="var(--muted)" data-en="1930s–50s">1930s–50s</text>
+  <rect x="1153.4" y="380" width="153.9" height="40" rx="6" fill="var(--jp)" opacity="0.14"/>
+  <rect x="1153.4" y="380" width="153.9" height="40" rx="6" fill="none" stroke="var(--jp)" stroke-width="1.5"/>
+  <circle cx="1166.4" cy="393" r="5" fill="var(--ok)"/>
+  <text x="1174.4" y="397" font-size="12" font-weight="700" fill="var(--ink)" data-en="Gold Imari charger">Gold Imari 挂盘</text>
+  <text x="1161.4" y="412" font-size="9.5" fill="var(--muted)" data-en="1960s–80s">1960s–80s</text>
+  <rect x="794.5" y="428" width="139.8" height="40" rx="6" fill="var(--jp)" opacity="0.14"/>
+  <rect x="794.5" y="428" width="139.8" height="40" rx="6" fill="none" stroke="var(--jp)" stroke-width="1.5"/>
+  <circle cx="807.5" cy="441" r="5" fill="var(--ok)"/>
+  <text x="815.5" y="445" font-size="11" font-weight="700" fill="var(--ink)" data-en="Nippon moriage">Nippon 珠彩·龙纹杯碟</text>
+  <text x="802.5" y="460" font-size="9.5" fill="var(--muted)" data-en="1891–1921 maple mark">1891–1921 枫叶款</text>
+  <rect x="946.2" y="428" width="130.2" height="40" rx="6" fill="var(--jp)" opacity="0.10"/>
+  <rect x="946.2" y="428" width="130.2" height="40" rx="6" fill="none" stroke="var(--jp)" stroke-dasharray="4 3"/>
+  <text x="956.2" y="445" font-size="11" fill="var(--ink)" data-en="Satsuma moriage">萨摩堆彩</text>
+  <text x="954.2" y="460" font-size="9.5" fill="var(--muted)" data-en="1920s–40s · context">1920s–40s·看懂不收</text>
+  <rect x="208" y="492" width="86" height="40" rx="6" fill="var(--is)" opacity="0.10"/>
+  <rect x="208" y="492" width="86" height="40" rx="6" fill="none" stroke="var(--is)" stroke-dasharray="4 3"/>
+  <text x="218" y="509" font-size="11" fill="var(--ink)" data-en="Iznik, late prime">Iznik 尾声</text>
+  <text x="216" y="524" font-size="9.5" fill="var(--muted)" data-en="after Yuan–Ming B&amp;W">承元明青花</text>
+  <rect x="1331" y="492" width="71" height="40" rx="6" fill="var(--is)" opacity="0.14"/>
+  <rect x="1331" y="492" width="71" height="40" rx="6" fill="none" stroke="var(--is)" stroke-width="1.5"/>
+  <circle cx="1344" cy="505" r="5" fill="var(--ok)"/>
+  <text x="1352" y="509" font-size="10" font-weight="700" fill="var(--ink)" data-en="Kütahya">Kütahya</text>
+  <text x="1339" y="524" font-size="9.5" fill="var(--muted)" data-en="tulip bowl · modern">郁金香碗·现代</text>
+  <g stroke="var(--muted)" stroke-width="1.1" fill="none" stroke-dasharray="5 4">
+    <path d="M146,148 C 136,280 160,420 212,486" marker-end="url(#arr)"/>
+    <path d="M310,146 C 322,208 372,240 410,268" marker-end="url(#arr)"/>
+    <path d="M440,256 C 446,300 448,340 450,376" marker-end="url(#arr)"/>
+    <path d="M560,378 C 580,366 600,358 624,350" marker-end="url(#arr)"/>
+    <path d="M768,268 C 778,220 784,184 790,150" marker-end="url(#arr)"/>
+  </g>
+  <g font-size="9.5" fill="var(--muted)">
+    <text x="104" y="330" data-en="Persian cobalt in,">钴料西来</text>
+    <text x="104" y="344" data-en="wares to Islam">成品销伊斯兰</text>
+    <text x="226" y="258" data-en="1602 China craze — Europe copies">1602 起中国热，欧洲开始仿</text>
+    <text x="400" y="258" data-en="1644 supply cut → Imari fills in">1644 断供 → 伊万里替补</text>
+    <text x="630" y="353" data-en="Europe then copies Imari">欧洲反过来仿伊万里</text>
+    <text x="640" y="246" data-en="Made to Western taste → Canton rose">按西方想象回供 → 广彩</text>
+  </g>
+</svg>
+
+
+
+</div>
+</figure>
+
+
+
+
+
+
+</div><!-- /home -->
+
+<div id="study" hidden>
+<button class="back" onclick="go('')"><span class="only-zh">← 返回年表</span><span class="only-en">← Back to timeline</span></button>
+<h2 class="sec" id="sec-spec" style="margin-top:6px"><span class="only-zh">标本室</span><span class="only-en">Study Room</span></h2>
+<p class="secsub"><span class="only-zh">反面教材与对照标本：做旧、贴花、现代装饰瓷。鉴定方法论的实物注脚。</span><span class="only-en">Cautionary and comparative specimens: artificial aging, transfer prints, modern decorative ware. Physical footnotes to the methodology.</span></p>
+<div class="grid" id="grid-spec"></div>
+</div><!-- /study -->
+
+<div id="detail" hidden></div>
+
+</div><!-- /wrap -->
+<script>
+/* ============================================================
+   维护说明（详见仓库 README.md）
+   · 加照片：图片放 photos/ 文件夹，下面对应条目里加文件名
+   · 加器物：ITEMS 数组里照模板加一条（中文），EN 对象里加对应英文
+   · 年表SVG盒子坐标需要计算，建议攒几件后让AI一次排版
+   ============================================================ */
+var PHOTOS = {
+"transitional-bowl": ["transitional-1.jpg","transitional-2.jpg","transitional-3.jpg","transitional-4.jpg"],
+"daoguang-jar": ["daoguang-1.jpg"],
+"transfer-bowl": ["transfer-1.jpg"],
+"wintermelon-jar": ["wintermelon-1.jpg"],
+"wucai-jar": ["wucai-1.jpg"],
+"hat-stand-lamp": ["hatstand-1.jpg"],
+"cloisonne-dish": ["cloisonne-dish-1.jpg"],
+"cloisonne-lamp": ["cloisonne-lamp-1.jpg"],
+"plaque-pair": ["plaque-1.jpg"],
+"rice-grain-set": ["ricegrain-1.jpg"],
+"bird-jars": ["birdjars-1.jpg"],
+"qing-figurine": ["qingfigurine-1.jpg"],
+"ginger-jars": ["gingerjars-1.jpg"],
+"fake-yuan-plate": ["fakeyuan-1.jpg"],
+"deco-vases": ["decovases-1.jpg"]
+};
+
+var ITEMS = [
+{id:"transitional-bowl", st:"col", title:"青花山水楼阁纹克拉克式大碗", date:"明末清初 · 转变期—康熙早期，约1650–80", 
+ verdict:"现藏最老一件。垫砂仰烧、自然火石红、棕眼老沁、快手分水四证互锁，景德镇外销中档货的完整工艺标本。同一「岛屿楼阁」稿本后来流经 Canton 直到柳纹——这只是手写原本。",
+ meta:[["口径","12 英寸（30.5 cm）"],["装烧","垫砂仰烧 · 内底满釉（未叠烧）"],["款识","无款（外销惯例）"]],
+ secs:[
+ ["鉴定依据",["足端烧结窑砂：颗粒半嵌入胎、玻璃化熔结，只分布在承重接触线上——1690 年前装烧工艺的断层证据","火石红自胎釉交界向外自然渐变、渗入胎体；做旧刷色浮表且无梯度","爆釉泡（棕眼）坑内铁褐沁色由内向外缓慢形成，向周围釉层晕散——时间最诚实的证人","画工：蕉叶点刺侧脉、一笔之内浓淡、勾线与分水错位（料不随线）——按件计酬快手外销画工的笔速，描不出来","足端熔结铁疤：窑渣高温熔结，与垫砂同源的「出生证明」","内底满釉、无涩圈无支钉痕＝单件垫砂装烧，恰合外销验收标准"]],
+ ["画片",["内壁：克拉克式放射开光——中心圆形开光绘岛屿楼阁（重檐亭、松蕉、小桥行人、远山雁阵、孤舟），外缘波涛卷云纹带；宽开光轮换葵花、牡丹、杂宝、禽鸟，窄格垂绶带配鱼鳞锦地","外壁：通景写意山水，疏朗留白、皴点松树——转变期趣味","青花：浙料灰蓝偏银灰，淡染浓勾——1650–80 国产料+快手分水的标准色（此期无铁锈斑：高锰低铁料不析晶）"]],
+ ["品相",["口沿、足沿小磕，磕口带老包浆（老伤）；足端窑病（粘砂、铁疤）出窑即有","轻度使用磨痕，多数时间为陈设器","无冲线"]],
+ ["流传",["卖家称约 1986 年购于波士顿中国城（原 listing：「Purchased about 40 years ago in Boston's Chinatown」）","推断经欧洲旧藏辗转入美（VOC→欧洲家庭→美东古董贸易为此类器物主流路径，未证实）","1986 年早于 1990s 仿古潮——「没有造假动机的年代，没有造假供给」"]],
+ ["方法论备注",["同一只碗室内暖光斜拍曾被误判为现代仿——光线规则：断代看发色只信自然散射光；证据规则：没见底足＝没有结论","中日之辨：橙调火石红、宽足墙斜削、底釉闪青铁点＝景德镇指纹；有田胎灰冷、外销碗多施口红（褐边）"]]
+ ]},
+{id:"daoguang-jar", st:"col", title:"民窑青花山水双盖罐", date:"清 · 道光—咸丰，约1820–60",
+ verdict:"内销民窑日用器，外罩盖+内封盖双原盖齐全。素胎平底线切割螺旋纹+自然铁析——低成本装烧工艺的教科书底。",
+ meta:[["结构","双原盖（外罩+内封）"],["底","无釉平底 · 线切割痕 · 自然 iron flashing"]],
+ secs:[
+ ["鉴定要点",["平切素胎底是民窑储物罐最省工的做法：不施釉、不修圈足，素胎直接坐窑板，连垫砂都省","底部所谓「磕」实为无釉结构+边缘磨损，非伤","晚清民窑料发色灰青偏闷，浓淡是「块」不是「层」——与转变期大碗同属国产料谱系、不同段位"]],
+ ["定位",["与转变期大碗构成「外销 vs 内销」对照：一个给洋人看要像样，一个自家用只求有画","流传推断：旧货外流或早期华埠商铺通道（内销器路径），无改装痕迹"]]
+ ]},
+{id:"transfer-bowl", st:"spec", title:"「中國 MADE IN CHINA」出口青花碗（釉下贴花）", date:"1972 年后—1980s",
+ verdict:"与转变期大碗同一「山水楼阁」稿本，隔三百年——手写体 vs 印刷体。确认釉下贴花：色调均一、圆点簇规律、边界利落。手绘/贴花对照标本。",
+ meta:[["款识","繁体「中國」+ MADE IN CHINA 双语印款"],["工艺","釉下贴花（青花花纸）"],["角色","对照标本"]],
+ secs:[
+ ["贴花判别三招",["转圈找重复单元与拼贴接缝——同版图案完全一致","强光放大找半色调网点","摸补笔：口沿弦纹、足圈线常手工旋出，与贴花主纹质感不同"]],
+ ["款识断代链",["「DECORATED IN HONG KONG」＝禁运期（1950–72）香港加彩 → 「MADE IN CHINA」＝1972 后 → 拼音/条码＝1980s 后"]]
+ ]},
+{id:"wintermelon-jar", st:"watch", title:"粉彩群仙祝寿冬瓜罐", date:"清 · 同治—光绪，约1862–1908",
+ verdict:"真晚清：宽足自然火石红、随机窑铁点、盖内缩釉「该糙处糙」——选择性偷工正是真民窑的生产指纹。原盖珊瑚红桃钮，寿礼题材。",
+ meta:[["查验","口沿/盖沿冲磕 · 盖原配 · 紫光查修"]],
+ secs:[
+ ["关键证据",["足圈露胎火石红自然渐变 vs 现代涂浆整圈均匀——与假做旧茶叶罐对照即明","盖内缩釉+荡釉不匀：施釉工序上最不讲究的面，出窑即有，非伤","罐内壁酱褐色＝晚清储物罐标准内壁处理"]]
+ ]},
+{id:"wucai-jar", st:"watch", title:"仿康熙五彩仕女婴戏将军罐", date:"民国—20世纪中期（待上手收窄）",
+ verdict:"矾红方章款+整圈酱褐足端＝非康熙（康熙民窑多不落款或青花双圈/秋叶款）。但画工认真、彩分色有功夫——「认真的仿古」，民国精仿一路，与糊弄的做旧不是一个档次。",
+ meta:[["破绽","矾红印章款 · 足端涂褐 · 开脸圆软甜美"],["待验","蛤蜊光 · 彩面磨损 · 款文正拍"]],
+ secs:[
+ ["康熙五彩 vs 后仿速查",["硬彩绿：康熙是玻璃质翠绿有厚度，彩缘有蛤蜊光虹晕","开脸：康熙瘦长硬朗（刀马人的劲道），民国后圆软甜美","底足：康熙细白砂底/釉底，足端露胎白净带自然窑红"]]
+ ]},
+{id:"hat-stand-lamp", st:"watch", title:"民国新粉彩帽筒（改台灯）", date:"民国，约1915–40",
+ verdict:"题「金玉姻缘 · 仿六如法」——《红楼梦》宝玉宝钗题材，攀唐寅笔法的文人款式。快笔程式开脸、老料沉浊、题款行笔连贯：民国置信度 85–90%。无底筒套改灯，大概率完全可逆（钻底假设待拆开证伪）。",
+ meta:[["改装","Mid-century 美式改灯 · 光绪通宝造型 finial 为装饰件"]],
+ secs:[
+ ["断代依据（软证据组合）",["笔速与胆量：长线一笔到底、衣纹背出来不是描出来——日画百件的产业生态 1990s 后已不存在","开脸程式：瓜子脸细弯眉樱桃口，民国仕女标准画法，快而有神","彩料物性：矿物料+乳香油，赭暖青灰带老料沉浊感；现代料艳得均匀","题款书法：行草连带自然——「画题+仿某法+名号+印」是民国瓷画时代格式"]],
+ ["待办",["拆灯还原（热风软化旧胶，忌撬）","题款印章垂直正拍 → 查民国瓷画人名录，名号对上在册画人价值翻倍","验证无底假设：改装器的「改装损伤」默认存在去证伪——改灯瓷器十有三四带着看不见的洞"]],
+ ["流传",["内销器路径：旧货外流/移民自带/驻华人员纪念品 → mid-century 美国「中国瓷灯」风潮（帽筒无底不用钻孔，是改灯头号目标）→ 后代按旧台灯出清"]]
+ ]},
+{id:"cloisonne-dish", st:"watch", title:"黑地掐丝珐琅龙纹盘", date:"清末—民国，约1900–30s",
+ verdict:"「大明年造」是晚清民国作坊寄托款——恰证非明。黑地云头锦地、老珐琅砂眼、鎏金磨褪：民国外销景泰蓝标准面貌。盘心釉面有磨损失光区，扣品相。",
+ meta:[["款识","大明年造（寄托款）"],["材质","铜胎掐丝珐琅（金属线，不入瓷器主年表）"]],
+ secs:[["判别点",["老珐琅釉面细密砂眼 vs 现代抛光如塑料","底部满施天蓝釉加掐丝云纹——老作坊做法，现代低档货底部偷工"]]]},
+{id:"cloisonne-lamp", st:"watch", title:"黑地万字锦景泰蓝瓶（改台灯）", date:"清末—民国，约1890–1930s",
+ verdict:"卍字不断头锦地掐丝细密规整——这个工时 1980s 后见不到。镂空鎏铜底座是正经美国灯厂（1920s–50s）配置，间接钉死入美时间。铜胎改灯必钻孔：与帽筒相反，建议评估后保持灯形态——钻孔已不可逆，老灯厂改装自有行情。",
+ meta:[["待验","瓶底钻孔情况"]],
+ secs:[]},
+{id:"plaque-pair", st:"watch", title:"瓷板画两块（松鹤蟠桃 / 锦鸡桃花）", date:"一现代（壬午或即 2002）· 一署「民国二十四年」（1935）待验",
+ verdict:"瓷板画是现代仿品最泛滥的品类。图一羽鳞机械、填彩均平、题字弱——倾向现代。图二书法有骨力、锦鸡晕染有笔意——民国可能性真实存在。定案看背面：民国板手工成型背面橘皮纹起伏，现代板机压平如玻璃。",
+ meta:[["待办","取框拍背面 + 题款印章正拍"]],
+ secs:[]},
+{id:"rice-grain-set", st:"watch", title:"玲珑米通龙纹餐具 22 件", date:"1950s–1972（禁运期）",
+ verdict:"「DECORATED IN HONG KONG」款＝美国对华禁运的直接产物：景德镇白坯+香港加彩的法律工程。款识断代链的活化石一环。Listing 披露诚实，来历（驻亚美国公务员姑妈带回）与年代自洽——成交时让卖家把来历写成文字，有溯源记录和没有是两个等级。",
+ meta:[["清点","5碗 7盘 8匙 2小碟（1盘口沿磕）"],["收藏建议","留一碗一碟一匙做标本即可"]],
+ secs:[]},
+{id:"bird-jars", st:"watch", title:"粉彩百鸟凤纹冬瓜罐一对", date:"清 · 同治—光绪，约1862–1908",
+ verdict:"底足一出即定案：宽露胎自然氧化、底釉随机铁点缩釉、无款——真晚清。藕粉地洋彩盖面+珊瑚桃钮原盖成对。初判曾疑「彩偏艳」，实为同光洋彩（进口化学彩料）本色——时代特征误记成仿品特征的一次校正。",
+ meta:[["扣分","右罐彩面磨损（待紫光排除老修）"],["查验","口沿盖沿冲磕"]],
+ secs:[]},
+{id:"qing-figurine", st:"spec", title:"清帝立像（现代装饰瓷）", date:"1980s 后",
+ verdict:"注浆成型、仿哥釉开片六角座、服制拼凑（团龙补+披领）、三件一组出口礼品套路——批量装饰瓷的标准特征样本。estate sale「氛围组」的典型成员。",
+ meta:[],
+ secs:[]},
+{id:"ginger-jars", st:"spec", title:"仿古青花茶叶罐一对（做旧教材）", date:"现代，近二三十年",
+ verdict:"反面教材三件套：整底刷棕浆（真老底色斑深浅随机）、撒胡椒式「芝麻釉」仿旧（真窑灰疏密无章）、出厂自带毛毡垫片（家居装饰渠道标准出货）。成对构图几乎复制——老民窑成对必有手绘差异。",
+ meta:[["教学点","假底做旧 vs 真火石红对照"]],
+ secs:[]},
+{id:"fake-yuan-plate", st:"spec", title:"仿元青花满池娇大盘（假铁锈斑教材）", date:"现代",
+ verdict:"铁锈斑真假一目了然的教科书：假斑铺满每一笔浓料、浮在釉面、发棕红；真苏麻离青锡光斑局部随机、下凹入胎、银黑金属光。且转变期国产料（高锰低铁）根本不析晶——「克拉克构图+铁锈斑」这种组合本身就是穿帮。",
+ meta:[["身份","樊家井体系装饰盘"],["教学点","铁锈斑看料（跟笔道走）· 铁点看胎和窑（与纹饰无关）"]],
+ secs:[]},
+{id:"deco-vases", st:"spec", title:"仿广彩方瓶 + 仿萨摩武士瓶", date:"20世纪中后期",
+ verdict:"方瓶：彩艳薄平无彩脚，20世纪中后期仿 Rose Mandarin。武士瓶：青绿地大开片仿 Satsuma 路数（真萨摩为米黄细开片陶胎），口沿有冲。美国家庭「中式装饰瓷组合」的典型构成——真东西往往就一两件，其余全是氛围组。",
+ meta:[["教学点","同框效应：真品摆进仿品堆会被看低——翻底足，一件件过"]],
+ secs:[]}
+];
+
+var EN = {
+"transitional-bowl":{title:"Blue-and-White Kraak-Style Landscape Bowl",date:"Late Ming–early Qing · Transitional to early Kangxi, c.1650–80",
+verdict:"The oldest piece in the collection. Four interlocking proofs — kiln-grit sand firing, natural fire red, aged burst-bubble staining, and fast professional brushwork — make it a complete technical specimen of mid-grade Jingdezhen export ware. The same \u2018island pavilion\u2019 design later flowed through Canton ware all the way to Blue Willow; this bowl is the hand-written original.",
+meta:[["Diameter","12 in. (30.5 cm)"],["Firing","Sand-set upright firing · fully glazed well (not stacked)"],["Mark","None (export convention)"]],
+secs:[
+["Authentication evidence",["Vitrified kiln grit fused to the foot rim, only along load-bearing contact lines — a process fossil of pre-1690 sand setting","Fire red grading naturally outward from the glaze line into the body; faked washes sit on the surface with no gradient","Iron-brown staining inside burst glaze bubbles, formed slowly from within and haloing into the surrounding glaze — time\u2019s most honest witness","Brushwork: pricked side-veins on plantain leaves, tonal shifts within single strokes, outline and wash slightly out of register — the speed of piece-rate export painters, impossible to trace","Fused iron slag scar on the foot: kiln debris melted on at temperature — the same \u2018birth certificate\u2019 as the grit","Fully glazed interior well, no stacking ring or spur marks = single-piece sand setting, exactly matching export acceptance standards"]],
+["Design",["Interior: kraak-style radiating panels — central roundel of island pavilions (double-eaved pavilion, pine and plantain, bridge figures, distant geese, lone boat) with a wave-and-cloud border; wide panels alternating sunflower, peony, precious objects and birds; narrow panels with ribbons over fish-scale diaper","Exterior: continuous free landscape, open spacing, dotted pines — Transitional taste","Cobalt: Zhejiang ore, silvery grey-blue, pale washes over darker outlines — the standard 1650–80 domestic-cobalt palette (no heaping-and-piling in this period: high-manganese, low-iron ore does not crystallize)"]],
+["Condition",["Small rim and foot chips with old patina in the breaks (old damage); foot kiln flaws (adhered grit, iron scar) present from firing","Light use wear; mostly displayed rather than used","No hairlines"]],
+["Provenance",["Seller: purchased around 1986 in Boston\u2019s Chinatown (\u2018about 40 years ago\u2019 per listing)","Likely route: old European collection → US East Coast antiques trade (the mainstream path for this class; unverified)","1986 predates the 1990s reproduction boom — an era with no motive to fake had no supply of fakes"]],
+["Method notes",["The same bowl was once misjudged as modern under warm indoor light at an angle — lighting rule: judge cobalt color only in diffuse daylight; evidence rule: no foot seen = no conclusion","China vs Arita: orange-toned fire red, beveled wide foot wall, blued glaze with iron specks = Jingdezhen fingerprints; Arita bodies run cool grey and export bowls usually carry a browned rim"]]
+]},
+"daoguang-jar":{title:"Folk-Kiln Blue-and-White Double-Lid Jar",date:"Qing · Daoguang–Xianfeng, c.1820–60",
+verdict:"Domestic folk-kiln utility ware with both original lids (outer dome + inner seal). Unglazed flat base with string-cut spiral and natural iron flashing — a textbook low-cost firing base.",
+meta:[["Structure","Both original lids (outer + inner seal)"],["Base","Unglazed flat base · string-cut marks · natural iron flashing"]],
+secs:[
+["Key points",["A flat unglazed base is the cheapest way to build a storage jar: no glaze, no trimmed foot ring, sits straight on the kiln shelf — even the setting sand is saved","The \u2018chip\u2019 on the base is unglazed construction plus edge wear, not damage","Late-Qing folk cobalt fires a muted grey-blue in blocks rather than layers — same domestic-ore lineage as the Transitional bowl, different grade"]],
+["Position",["Pairs with the Transitional bowl as a domestic-vs-export contrast: one had to look right for foreign buyers, the other just needed a picture for home use","Likely route: second-hand outflow or early Chinatown shops (the domestic-ware path); no conversion damage"]]
+]},
+"transfer-bowl":{title:"\u201c中國 MADE IN CHINA\u201d Export B&W Bowl (Underglaze Transfer)",date:"Post-1972 to 1980s",
+verdict:"Same \u2018island pavilion\u2019 design as the Transitional bowl, three hundred years apart — handwriting vs print. Confirmed underglaze transfer: uniform tone, regular dot clusters, crisp edges. Kept as the hand-painted vs transfer comparison specimen.",
+meta:[["Mark","Traditional 中國 + MADE IN CHINA bilingual stamp"],["Technique","Underglaze transfer print"],["Role","Comparison specimen"]],
+secs:[
+["Three transfer checks",["Rotate the piece to find repeating units and pattern seams — same-plate repeats are identical","Raking light and a loupe for halftone dots","Feel for touch-up: rim lines and foot bands are often hand-turned, a different texture from the transferred motif"]],
+["Mark-dating chain",["\u2018DECORATED IN HONG KONG\u2019 = embargo era (1950–72) HK enameling → \u2018MADE IN CHINA\u2019 = post-1972 → pinyin / barcode = 1980s onward"]]
+]},
+"wintermelon-jar":{title:"Famille-Rose \u2018Immortals\u2019 Wintermelon Jar",date:"Qing · Tongzhi–Guangxu, c.1862–1908",
+verdict:"Genuine late Qing: natural fire red on the wide foot, random kiln iron specks, crawled glaze inside the lid — rough exactly where roughness belongs. Selective corner-cutting is the production fingerprint of a real folk kiln. Original lid with coral-red peach finial; birthday-gift subject.",
+meta:[["Check","Rim/lid chips · lid originality · UV for restoration"]],
+secs:[["Key evidence",["Natural gradient fire red on the exposed foot vs the uniform painted wash on fakes — set it beside the faux ginger jars and it is obvious","Crawled, unevenly swirled glaze inside the lid: the least-cared-for surface in glazing, there from the kiln, not damage","Dark brown interior wash = standard late-Qing storage-jar treatment"]]]},
+"wucai-jar":{title:"Kangxi-Style Wucai Figure Jar (Later Copy)",date:"Republic to mid-20th c. (to narrow in hand)",
+verdict:"Iron-red seal mark plus a fully browned foot rim = not Kangxi (Kangxi folk ware is usually unmarked, or bears blue double rings or a leaf). But the painting is serious and the enamel layering skilled — an earnest archaism of the Republic fine-copy school, a different class from lazy fakery.",
+meta:[["Tells","Iron-red seal mark · painted brown foot · soft sweet faces"],["To check","Clam-light iridescence · enamel wear · straight-on mark photo"]],
+secs:[["Kangxi wucai vs later copies",["Hard-enamel green: Kangxi green is glassy and thick, with rainbow \u2018clam-light\u2019 at the enamel edges","Faces: Kangxi figures are lean and angular; Republic and later turn round and sweet","Base: Kangxi fine white sand base or glazed base — clean exposed paste with natural kiln blush"]]]},
+"hat-stand-lamp":{title:"Republic Famille-Rose Hat Stand (Lamp Conversion)",date:"Republic, c.1915–40",
+verdict:"Inscribed \u2018Gold and Jade Union · after Tang Yin\u2019s manner\u2019 — a Dream of the Red Chamber subject in literati format. Fast formulaic faces, muted period enamels, fluent inscription: 85–90% confidence Republic. A bottomless cylinder converted by sleeving — very likely fully reversible (the drill-hole hypothesis still to be disproven on disassembly).",
+meta:[["Conversion","Mid-century American lamping · the Guangxu-coin finial is a decorator part"]],
+secs:[
+["Dating (soft-evidence stack)",["Speed and nerve: long single-stroke lines, drapery thrown rather than traced — the paint-a-hundred-a-day ecosystem has not existed since the 1990s","Formula faces: melon-seed face, fine arched brows, cherry mouth — the standard Republic beauty, fast but alive","Enamel physics: mineral pigments in frankincense oil, warm ochre and grey-blue with period murk; modern colors are evenly bright","Inscription: fluent running script in the period format \u2018title + after a master + studio name + seal\u2019"]],
+["To do",["Un-lamp (soften old adhesive with hot air; never pry)","Straight-on photos of inscription and seal → check Republic porcelain-painter registries; a listed name multiplies the value","Disprove the no-drill assumption: treat conversion damage as present until shown otherwise — a good third of lamped porcelain hides a hole"]],
+["Provenance",["The domestic-ware path: second-hand outflow / immigrant luggage / expat souvenirs → the mid-century US \u2018Chinese porcelain lamp\u2019 fashion (bottomless hat stands were target #1 — no drilling needed) → descendants selling them off as old lamps"]]
+]},
+"cloisonne-dish":{title:"Black-Ground Cloisonné Dragon Dish",date:"Late Qing–Republic, c.1900–30s",
+verdict:"\u2018Da Ming Nian Zao\u2019 (Made in the Great Ming) is a late-Qing/Republic workshop apocryphal mark — proof it is not Ming. Black ground with cloud-scroll diaper, fine pitting in old enamel, worn gilding: standard Republic export cloisonné. Wear dulls the center, docking condition.",
+meta:[["Mark","Da Ming Nian Zao (apocryphal)"],["Material","Cloisonné on copper (metal — outside the porcelain timeline)"]],
+secs:[["Checks",["Fine pitting in aged enamel vs modern polish like plastic","Fully enameled sky-blue base with wire clouds — an old-workshop habit; cheap modern work skimps the base"]]]},
+"cloisonne-lamp":{title:"Black-Ground Swastika-Diaper Cloisonné Vase (Lamp)",date:"Late Qing–Republic, c.1890–1930s",
+verdict:"The unbroken-swastika diaper in fine, regular wire — labor you stop seeing after the 1980s. The pierced gilt-metal mount is a proper US lamp-factory base (1920s–50s), indirectly pinning the arrival date. Metal bodies always get drilled: unlike the hat stand, keep it as a lamp — the hole is irreversible, and factory-lamped pieces have their own market.",
+meta:[["To check","Drill condition at the base"]],secs:[]},
+"plaque-pair":{title:"Two Porcelain Plaques (Pine & Crane / Golden Pheasant)",date:"One modern (renwu, likely 2002) · one inscribed \u2018Republic year 24\u2019 (1935), unverified",
+verdict:"Plaques are the most heavily faked category of all. Plaque one: mechanical feathers and scales, flat even fill, weak calligraphy — leans modern. Plaque two: calligraphy with bone, pheasant washes with brush feeling — a real Republic possibility. The back decides it: Republic slabs show hand-formed orange-peel undulation; modern slabs are press-flat like glass.",
+meta:[["To do","Unframe and photograph the backs + straight-on seal shots"]],secs:[]},
+"rice-grain-set":{title:"Rice-Grain Dragon Dinner Set, 22 Pieces",date:"1950s–1972 (embargo era)",
+verdict:"\u2018DECORATED IN HONG KONG\u2019 = a direct product of the US embargo: Jingdezhen blanks enameled in Hong Kong as legal engineering. A living link in the mark-dating chain. Honest listing, and the provenance (an aunt in US government service in Asia) fits the period — have the seller put it in writing at sale: documented provenance is a different tier.",
+meta:[["Count","5 bowls, 7 plates, 8 spoons, 2 dishes (1 plate rim-chipped)"],["Advice","Keep one bowl, one dish and one spoon as specimens"]],secs:[]},
+"bird-jars":{title:"Famille-Rose \u2018Hundred Birds\u2019 Wintermelon Jar Pair",date:"Qing · Tongzhi–Guangxu, c.1862–1908",
+verdict:"Settled the moment the feet turned over: wide exposed paste with natural oxidation, random iron specks and glaze crawl on the base, unmarked — genuine late Qing. Pink-ground foreign-enamel lids with coral peach finials, both original, as a pair. The first impression of \u2018colors too bright\u2019 got corrected: that IS the Tongzhi–Guangxu imported-enamel palette — a period trait misfiled as a fake trait.",
+meta:[["Deduction","Enamel wear on the right jar (UV to rule out restoration)"],["Check","Rim and lid-rim chips"]],secs:[]},
+"qing-figurine":{title:"Standing Qing Emperor (Modern Decorative)",date:"Post-1980s",
+verdict:"Slip-cast, faux-ge crackle hexagonal base, costume elements mismatched across periods, three-to-a-set export-gift formula — a standard specimen of mass decorative ware, and a classic member of the estate-sale \u2018atmosphere crew.\u2019",
+meta:[],secs:[]},
+"ginger-jars":{title:"Faux-Antique B&W Ginger Jar Pair (Aging Teaching Set)",date:"Modern, last 20–30 years",
+verdict:"A three-part cautionary set: the whole base brushed with brown slurry (real old bases stain randomly), pepper-sprinkled \u2018sesame glaze\u2019 aging (real kiln dust falls without pattern), factory felt pads (home-décor channel stock). And the paired compositions are near-identical — real folk-kiln pairs always differ by hand.",
+meta:[["Lesson","Faked base aging vs real fire red, side by side"]],secs:[]},
+"fake-yuan-plate":{title:"Faux-Yuan \u2018Lotus Pond\u2019 Charger (Fake Iron-Spot Teaching Piece)",date:"Modern",
+verdict:"A textbook of fake vs real iron spotting: fake spots blanket every dark stroke, float on the glaze and fire brown-red; real Samarra-cobalt tin-light spots are local and random, sunk into the body with a silver-black metallic sheen. And Transitional-period domestic ore (high-manganese, low-iron) does not crystallize at all — the combination \u2018kraak layout + iron rust spots\u2019 is itself the giveaway.",
+meta:[["Identity","Fanjiajing-system decorative charger"],["Lesson","Rust spots follow the pigment (with the strokes) · iron specks follow body and kiln (ignore the design)"]],secs:[]},
+"deco-vases":{title:"Faux Rose Mandarin Vase + Faux Satsuma Warrior Vase",date:"Mid-to-late 20th c.",
+verdict:"Square vase: bright, thin, flat enamels with no raised body — mid/late-20th-century Rose Mandarin style. Warrior vase: blue-green ground with large crackle after Satsuma (real Satsuma is cream-toned, fine-crackle earthenware), hairline at the rim. The typical American-household \u2018Chinese decorative group\u2019 — the real thing is usually one or two pieces; the rest is atmosphere.",
+meta:[["Lesson","The lineup effect: a real piece in a fake crowd gets underrated — turn every foot, one by one"]],secs:[]}
+};
+
+var LANG='zh';
+try{ var s=localStorage.getItem('lang'); if(s==='en') LANG='en'; }catch(e){}
+var T={zh:{col:"入藏",watch:"过眼",spec:"标本",back:"← 返回年表",backS:"← 返回标本室",pend:"照片待补",sep:"："},
+       en:{col:"Collection",watch:"Noted",spec:"Specimen",back:"← Back to timeline",backS:"← Back to Study Room",pend:"Photos pending",sep:": "}};
+function Lit(it){
+  var e=EN[it.id];
+  if(LANG==='en'&&e){ return {id:it.id,st:it.st,title:e.title||it.title,date:e.date||it.date,
+    verdict:e.verdict||it.verdict,meta:e.meta||it.meta,secs:(e.secs&&e.secs.length?e.secs:it.secs)}; }
+  return it;
+}
+function esc(s){var d=document.createElement('div');d.textContent=s;return d.innerHTML;}
+function photoUrl(f){return "photos/"+f;}
+function chip(st){var t=T[LANG];return st==="col"?'<span class="chip ok">'+t.col+'</span>':st==="watch"?'<span class="chip buy">'+t.watch+'</span>':'<span class="chip spec">'+t.spec+'</span>';}
+
+function cardHtml(raw){
+  var it=Lit(raw);
+  var ph=PHOTOS[it.id]&&PHOTOS[it.id][0];
+  var th=ph?'<img loading="lazy" alt="'+esc(it.title)+'" src="'+photoUrl(ph)+'">':'<span class="ph">瓷</span>';
+  return '<div class="item" onclick="go(\''+it.id+'\')"><div class="thumb">'+th+'</div>'+
+    '<div class="tx"><div class="tt">'+it.title+'</div><div class="dt">'+esc(it.date)+'</div>'+chip(it.st)+'</div></div>';
+}
+function renderHome(){
+  var g=document.getElementById('grid-spec');
+  if(g) g.innerHTML = ITEMS.filter(function(i){return i.st==="spec";}).map(cardHtml).join('');
+}
+function renderDetail(raw){
+  var it=Lit(raw), t=T[LANG];
+  var ps=PHOTOS[it.id]||[];
+  var h = (it.st==="spec")
+    ? '<button class="back" onclick="go(\'study\')">'+t.backS+'</button>'
+    : '<button class="back" onclick="go(\'\')">'+t.back+'</button>';
+  h+='<h1>'+it.title+'</h1>';
+  h+='<div class="meta"><span><b>'+esc(it.date)+'</b></span>'+chip(it.st)+
+     (it.meta||[]).map(function(m){return '<span>'+esc(m[0])+t.sep+'<b>'+esc(m[1])+'</b></span>';}).join('')+'</div>';
+  if(ps.length){
+    h+='<div class="hero"><img id="heroimg" alt="'+esc(it.title)+'" src="'+photoUrl(ps[0])+'"></div>';
+    if(ps.length>1){
+      h+='<div class="strip">'+ps.map(function(p,i){
+        return '<img alt="'+(i+1)+'"'+(i===0?' class="on"':'')+' src="'+photoUrl(p)+'" onclick="swapHero(this,\''+p+'\')">';
+      }).join('')+'</div>';
+    }
+  } else {
+    h+='<div class="hero"><div class="thumb" style="aspect-ratio:16/7"><span class="ph">'+t.pend+'</span></div></div>';
+  }
+  h+='<p class="verdict">'+esc(it.verdict)+'</p>';
+  (it.secs||[]).forEach(function(s){
+    h+='<div class="dsec"><h3>'+esc(s[0])+'</h3><ul>'+s[1].map(function(li){return '<li>'+esc(li)+'</li>';}).join('')+'</ul></div>';
+  });
+  document.getElementById('detail').innerHTML=h;
+}
+function swapHero(el,p){
+  document.getElementById('heroimg').src=photoUrl(p);
+  document.querySelectorAll('.strip img').forEach(function(x){x.classList.remove('on');});
+  el.classList.add('on');
+}
+function go(id){ location.hash = id ? id : ''; if(!id){ render(); } }
+function scrollSec(id){ var el=document.getElementById(id); if(el) el.scrollIntoView({behavior:'smooth'}); }
+function render(){
+  var id=(location.hash||'').replace(/^#/,'');
+  var it=null;
+  for(var i=0;i<ITEMS.length;i++){ if(ITEMS[i].id===id){ it=ITEMS[i]; break; } }
+  var home=document.getElementById('home'), det=document.getElementById('detail'), stu=document.getElementById('study');
+  if(it){ home.hidden=true; stu.hidden=true; det.hidden=false; renderDetail(it); window.scrollTo(0,0); }
+  else if(id==='study'){ home.hidden=true; det.hidden=true; stu.hidden=false; window.scrollTo(0,0); }
+  else { det.hidden=true; stu.hidden=true; home.hidden=false; }
+}
+function applyLang(){
+  document.body.setAttribute('data-lang',LANG);
+  document.documentElement.lang = (LANG==='en')?'en':'zh';
+  var b=document.getElementById('langbtn'); if(b) b.textContent = (LANG==='zh')?'EN':'中文';
+  document.querySelectorAll('[data-en]').forEach(function(el){
+    if(!el.dataset.zh) el.dataset.zh = el.textContent;
+    el.textContent = (LANG==='en') ? el.dataset.en : el.dataset.zh;
+  });
+  renderHome(); render();
+}
+function toggleLang(){
+  LANG = (LANG==='zh') ? 'en' : 'zh';
+  try{ localStorage.setItem('lang',LANG); }catch(e){}
+  applyLang();
+}
+window.addEventListener('hashchange', render);
+applyLang();
+</script>
+</body></html>
