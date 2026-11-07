@@ -95,11 +95,11 @@ body[data-lang="zh"] .only-en{display:none!important;}
 <div class="wrap">
 
 <div id="home">
-<h1><span class="only-zh">瓷路 · 铁铭藏瓷</span><span class="only-en">Porcelain Routes · The Tieming Collection</span></h1>
+<h1><span class="only-zh">瓷路 · 铁明藏瓷</span><span class="only-en">Porcelain Routes · The Tieming Collection</span></h1>
 <p class="sub"><span class="only-zh">中国 · 西方 · 日本三条瓷器线的四百年互动，与藏品的对位（1550–2000）。点年表上的实心块或下方卡片，看单件档案。</span><span class="only-en">Four centuries of interplay among the Chinese, Western and Japanese porcelain traditions (1550–2000), mapped against this collection. Click a solid block on the chart, or any card below, to open an item dossier.</span></p>
 <nav class="top">
   <button onclick="go('')"><span class="only-zh">年表</span><span class="only-en">Timeline</span></button>
-  <button onclick="go('study')"><span class="only-zh">标本室</span><span class="only-en">Study Room</span></button>
+  <span id="navsecs"></span>
   <button class="langb" onclick="toggleLang()" id="langbtn">EN</button>
 </nav>
 
@@ -371,12 +371,7 @@ body[data-lang="zh"] .only-en{display:none!important;}
 
 </div><!-- /home -->
 
-<div id="study" hidden>
-<button class="back" onclick="go('')"><span class="only-zh">← 返回年表</span><span class="only-en">← Back to timeline</span></button>
-<h2 class="sec" id="sec-spec" style="margin-top:6px"><span class="only-zh">标本室</span><span class="only-en">Study Room</span></h2>
-<p class="secsub"><span class="only-zh">反面教材与对照标本：做旧、贴花、现代装饰瓷。鉴定方法论的实物注脚。</span><span class="only-en">Cautionary and comparative specimens: artificial aging, transfer prints, modern decorative ware. Physical footnotes to the methodology.</span></p>
-<div class="grid" id="grid-spec"></div>
-</div><!-- /study -->
+<div id="tabs"></div>
 
 <div id="detail" hidden></div>
 
@@ -560,6 +555,36 @@ verdict:"Square vase: bright, thin, flat enamels with no raised body — mid/lat
 meta:[["Lesson","The lineup effect: a real piece in a fake crowd gets underrated — turn every foot, one by one"]],secs:[]}
 };
 
+/* ============================================================
+   分类配置：加一个新分类 = 在 SECTIONS 里加一行
+   id   : 器物条目里 st 字段用的值（小写英文）
+   hash : 网址锚（通常同 id；spec 沿用 study 以兼容旧链接）
+   zh/en: 导航按钮与标签页标题；zhs/ens: 标签页副标题
+   加完后：ITEMS 里新器物 st 用这个 id，PHOTOS 照常配图即可。
+   年表SVG是手工排版，与分类无关。
+   ============================================================ */
+var SECTIONS = [
+ {id:"spec", hash:"study", zh:"标本室", en:"Study Room",
+  zhs:"反面教材与对照标本：做旧、贴花、现代装饰瓷。鉴定方法论的实物注脚。",
+  ens:"Cautionary and comparative specimens: artificial aging, transfer prints, modern decorative ware. Physical footnotes to the methodology."}
+];
+function secByHash(h){for(var i=0;i<SECTIONS.length;i++){if((SECTIONS[i].hash||SECTIONS[i].id)===h)return SECTIONS[i];}return null;}
+function secById(id){for(var i=0;i<SECTIONS.length;i++){if(SECTIONS[i].id===id)return SECTIONS[i];}return null;}
+function buildTabs(){
+  var nav=document.getElementById('navsecs'), tabs=document.getElementById('tabs');
+  if(!nav||!tabs) return;
+  var nb='', tb='';
+  for(var i=0;i<SECTIONS.length;i++){
+    var s=SECTIONS[i], h=s.hash||s.id;
+    nb+='<button onclick="go(\''+h+'\')">'+esc(LANG==='en'?s.en:s.zh)+'</button>';
+    tb+='<div id="tab-'+esc(h)+'" class="sectab" hidden>'+
+        '<button class="back" onclick="go(\'\')">'+T[LANG].back+'</button>'+
+        '<h2 class="sec" style="margin-top:6px">'+esc(LANG==='en'?s.en:s.zh)+'</h2>'+
+        '<p class="secsub">'+esc(LANG==='en'?(s.ens||''):(s.zhs||''))+'</p>'+
+        '<div class="grid" id="grid-'+esc(s.id)+'"></div></div>';
+  }
+  nav.innerHTML=nb; tabs.innerHTML=tb;
+}
 var LANG='zh';
 try{ var s=localStorage.getItem('lang'); if(s==='en') LANG='en'; }catch(e){}
 var T={zh:{col:"入藏",watch:"过眼",spec:"标本",back:"← 返回年表",backS:"← 返回标本室",pend:"照片待补",sep:"："},
@@ -582,14 +607,19 @@ function cardHtml(raw){
     '<div class="tx"><div class="tt">'+it.title+'</div><div class="dt">'+esc(it.date)+'</div>'+chip(it.st)+'</div></div>';
 }
 function renderHome(){
-  var g=document.getElementById('grid-spec');
-  if(g) g.innerHTML = ITEMS.filter(function(i){return i.st==="spec";}).map(cardHtml).join('');
+  for(var i=0;i<SECTIONS.length;i++){
+    (function(s){
+      var g=document.getElementById('grid-'+s.id);
+      if(g) g.innerHTML = ITEMS.filter(function(it){return it.st===s.id;}).map(cardHtml).join('');
+    })(SECTIONS[i]);
+  }
 }
 function renderDetail(raw){
   var it=Lit(raw), t=T[LANG];
   var ps=PHOTOS[it.id]||[];
-  var h = (it.st==="spec")
-    ? '<button class="back" onclick="go(\'study\')">'+t.backS+'</button>'
+  var sec = secById(it.st);
+  var h = sec
+    ? '<button class="back" onclick="go(\''+(sec.hash||sec.id)+'\')">\u2190 '+esc(LANG==='en'?sec.en:sec.zh)+'</button>'
     : '<button class="back" onclick="go(\'\')">'+t.back+'</button>';
   h+='<h1>'+it.title+'</h1>';
   h+='<div class="meta"><span><b>'+esc(it.date)+'</b></span>'+chip(it.st)+
@@ -617,14 +647,20 @@ function swapHero(el,p){
 }
 function go(id){ location.hash = id ? id : ''; if(!id){ render(); } }
 function scrollSec(id){ var el=document.getElementById(id); if(el) el.scrollIntoView({behavior:'smooth'}); }
+function hideTabs(){
+  var ts=document.querySelectorAll('.sectab');
+  for(var i=0;i<ts.length;i++) ts[i].hidden=true;
+}
 function render(){
   var id=(location.hash||'').replace(/^#/,'');
   var it=null;
   for(var i=0;i<ITEMS.length;i++){ if(ITEMS[i].id===id){ it=ITEMS[i]; break; } }
-  var home=document.getElementById('home'), det=document.getElementById('detail'), stu=document.getElementById('study');
-  if(it){ home.hidden=true; stu.hidden=true; det.hidden=false; renderDetail(it); window.scrollTo(0,0); }
-  else if(id==='study'){ home.hidden=true; det.hidden=true; stu.hidden=false; window.scrollTo(0,0); }
-  else { det.hidden=true; stu.hidden=true; home.hidden=false; }
+  var home=document.getElementById('home'), det=document.getElementById('detail');
+  var sec=secByHash(id);
+  if(it){ home.hidden=true; hideTabs(); det.hidden=false; renderDetail(it); window.scrollTo(0,0); }
+  else if(sec){ home.hidden=true; det.hidden=true; hideTabs();
+    var el=document.getElementById('tab-'+(sec.hash||sec.id)); if(el) el.hidden=false; window.scrollTo(0,0); }
+  else { det.hidden=true; hideTabs(); home.hidden=false; }
 }
 function applyLang(){
   document.body.setAttribute('data-lang',LANG);
@@ -634,7 +670,7 @@ function applyLang(){
     if(!el.dataset.zh) el.dataset.zh = el.textContent;
     el.textContent = (LANG==='en') ? el.dataset.en : el.dataset.zh;
   });
-  renderHome(); render();
+  buildTabs(); renderHome(); render();
 }
 function toggleLang(){
   LANG = (LANG==='zh') ? 'en' : 'zh';

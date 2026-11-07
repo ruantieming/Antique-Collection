@@ -30,6 +30,16 @@
 2. `var EN = {` 对象里加同id的英文版（title/date/verdict/meta/secs同结构）；漏了也不崩，EN模式下回退显示中文。
 3. `PHOTOS` 里加照片（见上）。
 
+
+**加一个新分类**（如外销银器、玉器）——两步
+1. `index.html` 里搜 `var SECTIONS`，照样加一行：
+```js
+ {id:"silver", hash:"silver", zh:"外销银器", en:"Export Silver",
+  zhs:"分类副标题（中文）。", ens:"Section subtitle (English)."},
+```
+   （上一行末尾记得补逗号。）导航按钮、标签页、网格、返回键全部自动生成。
+2. 新器物照常加进 `ITEMS`/`EN`/`PHOTOS`，`st` 用新分类的 id（如 `st:"silver"`），卡片自动归入该标签页。
+
 **年表SVG加盒子**：坐标映射 X(年)=208+(年-1550)×1.72（1900前）/ 810+(年-1900)×5.92（1900后）。手算易错，建议攒几件后交给AI统一排版（见下）。
 
 ## 让AI改（个人Gemini/Claude/ChatGPT通用指令）
